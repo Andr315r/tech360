@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech360 – Discover Technology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #050810;
+            --card-bg: rgba(15, 23, 42, 0.7);
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --sw-color: #22c55e;
+            --hw-color: #00d4ff;
+            --sec-color: #ff4d4d;
+            --ai-color: #facc15;
+            --home-highlight: #a855f7;
+        }
+
+        /* --- GENERAL STYLES & SCROLLBAR --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--home-highlight); }
+
+        /* --- STICKY TOP NAV --- */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            height: 70px;
+            background: rgba(5, 8, 16, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2000;
+            box-sizing: border-box;
+        }
+
+        .nav-logo {
+            color: var(--home-highlight);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 6px 18px;
+            width: 280px;
+            transition: all 0.4s ease;
+        }
+
+        .search-container:focus-within {
+            width: 350px;
+            border-color: var(--home-highlight);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+        }
+
+        .search-container input {
+            background: none;
+            border: none;
+            color: white;
+            outline: none;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        /* --- HEADER --- */
+        header {
+            height: 55vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(5, 8, 16, 0.8), rgba(5, 8, 16, 0.8)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072');
+            background-size: cover;
+            background-position: center;
+            padding-top: 70px;
+        }
+
+        .logo { font-size: clamp(2.5rem, 8vw, 4rem); text-transform: uppercase; font-weight: 900; margin: 0; }
+        .highlight { color: var(--home-highlight); text-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
+        .tagline { color: var(--text-dim); font-style: italic; max-width: 650px; padding: 20px; font-size: 1.1rem; }
+
+        /* --- CONTENT --- */
+        .container { max-width: 1200px; margin: -60px auto 60px; padding: 0 20px; position: relative; z-index: 10; }
+
+        .welcome-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .card.hidden { display: none; }
+
+        .card-icon { font-size: 3.5rem; margin-bottom: 20px; transition: 0.3s; }
+        .card:hover .card-icon { transform: scale(1.1); }
+
+        .software-card .card-icon { color: var(--sw-color); filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.3)); }
+        .hardware-card .card-icon { color: var(--hw-color); filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3)); }
+        .ai-card .card-icon { color: var(--ai-color); filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.3)); }
+        .security-card .card-icon { color: var(--sec-color); filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.3)); }
+
+        .btn {
+            margin-top: auto;
+            padding: 12px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 85%;
+            transition: 0.3s;
+        }
+
+        .card:hover .btn { background: rgba(255,255,255,0.1); border-color: white; }
+
+        /* --- FOOTER --- */
+        footer { text-align: center; padding: 60px; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .top-nav { padding: 0 20px; }
+            .search-container { width: 140px; }
+            .search-container:focus-within { width: 160px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <a href="index.html" class="nav-logo">TECH<span style="color:white">360</span></a>
+    <div class="search-container">
+        <input type="text" id="indexSearch" placeholder="Search technology...">
+        <i class="fas fa-search" style="font-size: 0.8rem; color: var(--text-dim);"></i>
+    </div>
+</nav>
+
+<header>
+    <h1 class="logo">Tech <span class="highlight">360</span></h1>
+    <p class="tagline">“The human condition today is better than it’s ever been, and technology is one of the reasons for that.” – Tom Clancy</p>
+</header>
+
+<main class="container">
+    <div class="welcome-box">
+        <h2 style="margin-top:0">Welcome to Tech_360</h2>
+        <p>Explore our technology portal. Select a category to begin.</p>
+    </div>
+
+    <div class="cards-container">
+        <div class="card software-card">
+            <i class="fas fa-code card-icon"></i>
+            <h3>Software</h3>
+            <p>From kernels to cloud platforms, discover the logic that runs our digital world.</p>
+            <a href="software.html" class="btn">Explore Software</a>
+        </div>
+
+        <div class="card hardware-card">
+            <i class="fas fa-microchip card-icon"></i>
+            <h3>Hardware</h3>
+            <p>Turning electricity into intelligence. Master the machine's physical components.</p>
+            <a href="hardware.html" class="btn">Explore Hardware</a>
+        </div>
+
+        <div class="card ai-card">
+            <i class="fas fa-brain card-icon"></i>
+            <h3>AI</h3>
+            <p>Dive into neural networks, deep learning, and the rapid evolution of machine intelligence.</p>
+            <a href="ai.html" class="btn">Explore AI</a>
+        </div>
+
+        <div class="card security-card">
+            <i class="fas fa-user-shield card-icon"></i>
+            <h3>Security</h3>
+            <p>Master the art of defense. Protect networks and data from emerging cyber threats.</p>
+            <a href="security.html" class="btn">Explore Security</a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Tech_360 | Code is Art_</p>
+</footer>
+
+<script>
+    const searchInput = document.getElementById('indexSearch');
+    const cards = document.querySelectorAll('.card');
+
+    searchInput.addEventListener('input', (e) => {
+        const value = e.target.value.toLowerCase();
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const text = card.querySelector('p').textContent.toLowerCase();
+            if (title.includes(value) || text.includes(value)) {
+                card.classList.remove('hidden');
+                card.style.opacity = "1";
+            } else {
+                card.classList.add('hidden');
+                card.style.opacity = "0";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

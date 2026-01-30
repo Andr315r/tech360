@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI_360 - Tech360</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #050810;
+            --card-bg: #0f172a;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --ai-color: #facc15; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- BACK TO TOP BUTTON (AMARELO) --- */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--ai-color);
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none; /* Escondido inicialmente */
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 2000;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3);
+        }
+
+        #backToTop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(250, 204, 21, 0.5);
+        }
+
+        .home-btn {
+            position: fixed; top: 20px; left: 20px; z-index: 1000;
+            background: var(--card-bg); color: var(--ai-color);
+            text-decoration: none; padding: 10px 20px; border-radius: 5px;
+            border: 1px solid var(--ai-color); font-weight: bold; transition: 0.3s;
+        }
+        .home-btn:hover { background: var(--ai-color); color: #000; }
+
+        header {
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), 
+                        url('https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 5px solid var(--ai-color);
+        }
+
+        header h1 { font-size: 1.8rem; margin: 0; font-weight: 900; text-transform: uppercase; }
+        .yellow { color: var(--ai-color); }
+
+        nav.sticky-nav {
+            background: rgba(15, 23, 42, 0.95);
+            position: sticky; top: 0; z-index: 999;
+            padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .menu { display: flex; justify-content: center; list-style: none; gap: 20px; margin: 0; padding: 0; flex-wrap: wrap; }
+        .menu a { color: var(--text-dim); text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.7rem; }
+        .menu a:hover { color: var(--ai-color); }
+
+        main { max-width: 1300px; margin: 50px auto; padding: 0 20px; }
+
+        .big-card {
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border-left: 10px solid var(--ai-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        h2 { font-size: 1.4rem; color: var(--ai-color); margin-top: 0; margin-bottom: 25px; text-transform: uppercase; }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.02);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+        .box:hover { border-color: var(--ai-color); background: rgba(255,255,255,0.04); }
+
+        .box h3 { color: var(--ai-color); margin-top: 0; font-size: 1.3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .box p { color: var(--text-dim); font-size: 0.95rem; }
+        .box ul { color: #cbd5e1; padding-left: 20px; }
+        .box li { margin-bottom: 8px; font-size: 0.9rem; }
+
+        .quantum-style { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); border: 1px solid var(--ai-color); }
+
+        footer { text-align: center; padding: 80px; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+
+<button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+<a href="index.html" class="home-btn">HOME</a>
+
+<header>
+    <h1>AI_<span class="yellow">360</span></h1>
+    <p>The Comprehensive Encyclopedia of Synthetic Intelligence and Future Computing.</p>
+</header>
+
+<nav class="sticky-nav">
+    <ul class="menu">
+        <li><a href="#foundations">Foundations</a></li>
+        <li><a href="#daily">Daily Life</a></li>
+        <li><a href="#generative">Generative</a></li>
+        <li><a href="#industry">Industry</a></li>
+        <li><a href="#quantum">Quantum</a></li>
+        <li><a href="#ethics">Ethics</a></li>
+    </ul>
+</nav>
+
+<main>
+
+    <section id="foundations" class="big-card">
+        <h2><i class="fas fa-brain"></i> Technical Foundations</h2>
+        <div class="grid-container">
+            <div class="box">
+                <h3>Neural Architectures</h3>
+                <p>Modern AI is built on <strong>Neural Networks</strong>, layers of interconnected nodes that mimic biological neurons. Key types include:</p>
+                <ul>
+                    <li><strong>CNNs:</strong> Crucial for Computer Vision.</li>
+                    <li><strong>Transformers:</strong> The backbone of LLMs using "Self-Attention".</li>
+                    <li><strong>GANs:</strong> Used for creating realistic synthetic data.</li>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>The Math: Tensors & Gradients</h3>
+                <p>At its core, AI is <strong>Linear Algebra</strong>. Data is processed as Tensors (N-dimensional arrays), and the model learns through <strong>Backpropagation</strong>—minimizing errors using Gradient Descent.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="daily" class="big-card">
+        <h2><i class="fas fa-mobile-screen"></i> AI in Daily Life</h2>
+        <div class="grid-container">
+            <div class="box">
+                <h3>Personalized Experience</h3>
+                <p>Algorithms on <strong>Social Media</strong> and <strong>Streaming</strong> (Netflix/Spotify) analyze your behavior in real-time to curate content, increasing engagement through predictive psychological modeling.</p>
+            </div>
+            <div class="box">
+                <h3>Smart Navigation</h3>
+                <p>Beyond GPS, AI predicts traffic flow and optimizes logistics for delivery services like Amazon, ensuring the most efficient "last-mile" delivery possible.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="generative" class="big-card">
+        <h2><i class="fas fa-wand-magic-sparkles"></i> The Generative Boom</h2>
+        
+
+
+
+[Image of large language model architecture transformer]
+
+
+        <div class="grid-container">
+            <div class="box">
+                <h3>Conversational Intelligence</h3>
+                <p><strong>LLMs (ChatGPT, Claude)</strong> represent a shift from search to synthesis. They don't just find information; they reason, summarize, and generate original code or creative writing.</p>
+            </div>
+            <div class="box">
+                <h3>Media Synthesis</h3>
+                <p>From <strong>Midjourney</strong> (images) to <strong>Sora</strong> (video), AI is now capable of producing high-fidelity assets that are indistinguishable from human-made content.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="industry" class="big-card">
+        <h2><i class="fas fa-microchip"></i> AI in Production</h2>
+        <div class="grid-container">
+            <div class="box">
+                <h3>Biotech & Medicine</h3>
+                <p>AI is solving the <strong>Protein Folding</strong> problem (AlphaFold), which allows scientists to understand the building blocks of life and develop vaccines in record time.</p>
+            </div>
+            <div class="box">
+                <h3>Autonomous Systems</h3>
+                <p>From self-driving Teslas to automated warehouses, AI handles "Edge Computing" to make split-second decisions without needing the cloud.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="quantum" class="big-card quantum-style">
+        <h2><i class="fas fa-atom"></i> Quantum AI Frontier</h2>
+        <div class="grid-container">
+            <div class="box">
+                <h3>Exponential Processing</h3>
+                <p>Traditional computers use bits (0 or 1). <strong>Quantum Computers</strong> use Qubits, allowing AI to explore all possible solutions to a problem simultaneously.</p>
+            </div>
+            <div class="box">
+                <h3>Solving the Impossible</h3>
+                <p>Quantum AI will be used to simulate climate patterns with 100% accuracy and discover materials for room-temperature superconductors.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ethics" class="big-card">
+        <h2><i class="fas fa-shield-halved"></i> Governance & AGI</h2>
+        <div class="grid-container">
+            <div class="box">
+                <h3>The Path to AGI</h3>
+                <p>Artificial General Intelligence is the point where a machine can perform any intellectual task a human can. The debate is no longer "if", but "when".</p>
+            </div>
+            <div class="box">
+                <h3>Alignment & Safety</h3>
+                <p>The biggest challenge is <strong>Alignment</strong>: ensuring that as AI becomes more powerful than us, its goals remain exactly aligned with human survival and values.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    </footer>
+
+<script>
+    // Mostrar botão ao descer a página
+    window.onscroll = function() {
+        var btn = document.getElementById("backToTop");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btn.style.display = "flex";
+        } else {
+            btn.style.display = "none";
+        }
+    };
+
+    // Função para subir
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware_Tech360</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #050810;
+            --card-bg: #0f172a;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --hw-color: #00d4ff; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .simple-home-btn {
+            position: fixed; top: 20px; left: 20px; z-index: 1000;
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--text-dim); text-decoration: none; padding: 10px 15px;
+            border-radius: 5px; border: 1px solid rgba(255,255,255,0.1);
+            font-weight: bold; transition: 0.3s;
+        }
+        .simple-home-btn:hover { color: white; border-color: var(--hw-color); }
+
+        header {
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 4px solid var(--hw-color);
+        }
+
+        nav.sticky-nav {
+            background: rgba(15, 23, 42, 0.95);
+            position: sticky; top: 0; z-index: 999;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            overflow-x: auto;
+        }
+
+        .menu { display: flex; justify-content: center; list-style: none; gap: 15px; padding: 0 20px; margin: 0; min-width: max-content; }
+        .menu a { color: var(--text-dim); text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        .menu a:hover { color: var(--hw-color); }
+
+        main { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-top: 3px solid var(--hw-color);
+        }
+
+        h2 { display: flex; align-items: center; gap: 15px; color: var(--hw-color); margin-top: 0; font-size: 1.4rem; }
+
+        .list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-grid li {
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--hw-color);
+        }
+
+        .list-grid li strong { color: #fff; display: block; margin-bottom: 4px; }
+
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px; display: none;
+            background: var(--hw-color); color: white; border: none;
+            padding: 15px; border-radius: 50%; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="simple-home-btn"><i class="fas fa-arrow-left"></i> HOME</a>
+<button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+<header>
+    <h1>Hardware<span style="color:var(--hw-color)">_360</span></h1>
+    <p>Hardware is the solid heart of the machine.</p>
+</header>
+
+<nav class="sticky-nav">
+    <ul class="menu">
+        <li><a href="#pc">PC & Peripherals</a></li>
+        <li><a href="#internal">Internal Components</a></li>
+        <li><a href="#gaming">Gaming</a></li>
+        <li><a href="#mobile">Mobile & Wear</a></li>
+        <li><a href="#iot">IoT & Home</a></li>
+        <li><a href="#net">Networking</a></li>
+        <li><a href="#industrial">Industrial & Robotics</a></li>
+        <li><a href="#energy">Energy & Transport</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section id="pc">
+        <div class="card">
+            <h2><i class="fas fa-desktop"></i> Computers & Peripherals</h2>
+            <ul class="list-grid">
+                <li><strong>Desktops & Workstations</strong> Stationary personal computers and high-performance professional nodes.</li>
+                <li><strong>Laptops & Ultrabooks</strong> Portable computing solutions, including thin-and-light and rugged models.</li>
+                <li><strong>Displays</strong> CRT, LCD, LED, and OLED monitors. High-refresh gaming and professional color-accurate panels.</li>
+                <li><strong>Input Hardware</strong> Mechanical/wireless keyboards, gaming mice, and trackballs.</li>
+                <li><strong>Printers & Scanners</strong> Inkjet, Laser, Dot Matrix, 3D printers, and flatbed digitizers.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="internal">
+        <div class="card">
+            <h2><i class="fas fa-microchip"></i> Internal Architecture</h2>
+            
+            <ul class="list-grid">
+                <li><strong>Processors (CPU)</strong> The brain of the system. Multi-core architectures and integrated logic.</li>
+                <li><strong>Graphics (GPU)</strong> Dedicated and integrated units for parallel processing and visual rendering.</li>
+                <li><strong>System Memory (RAM)</strong> DDR4/DDR5 and ECC memory for temporary data handling.</li>
+                <li><strong>Storage Media</strong> NVMe/SATA SSDs for speed, and HDDs for high-capacity magnetic storage.</li>
+                <li><strong>The Motherboard</strong> The central PCB holding the Chipset, BIOS/UEFI firmware, and expansion slots (PCIe).</li>
+                <li><strong>Power Supply (PSU)</strong> Modular and high-efficiency electrical converters (80 Plus ratings).</li>
+                <li><strong>Thermal Management</strong> Air coolers, AIO liquid systems, and passive heat sinks.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="gaming">
+        <div class="card">
+            <h2><i class="fas fa-gamepad"></i> Gaming & Consoles</h2>
+            <ul class="list-grid">
+                <li><strong>Home Consoles</strong> The full history: PlayStation (1-5), Xbox Series X/S, and Nintendo Wii/Switch.</li>
+                <li><strong>Handheld Evolution</strong> From Game Boy and PSP to modern Steam Decks and Switch OLED.</li>
+                <li><strong>XR Hardware</strong> Virtual Reality (Meta Quest/Vive) and Augmented Reality (AR) glasses.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="mobile">
+        <div class="card">
+            <h2><i class="fas fa-mobile-alt"></i> Mobile & Wearable Tech</h2>
+            <ul class="list-grid">
+                <li><strong>Mobile Devices</strong> Smartphones (iOS/Android), Foldables, and E-ink readers.</li>
+                <li><strong>Wearables</strong> Smartwatches, Fitness trackers, and medical-grade heart/glucose monitors.</li>
+                <li><strong>Wireless Audio</strong> TWS Earbuds, bone-conduction headsets, and neckband audio.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="iot">
+        <div class="card">
+            <h2><i class="fas fa-house-signal"></i> IoT & Smart Home</h2>
+            <ul class="list-grid">
+                <li><strong>Smart Hubs</strong> Voice assistants (Alexa/Google/Siri) and central IoT control screens.</li>
+                <li><strong>Environmental Control</strong> Smart bulbs, thermostats, and connected HVAC systems.</li>
+                <li><strong>Safety & Security</strong> Smart doorbells, biometric locks, and motion/smoke sensors.</li>
+                <li><strong>Appliances</strong> Connected fridges, robot vacuums, and smart kitchen gear.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="net">
+        <div class="card">
+            <h2><i class="fas fa-wifi"></i> Networking & Infrastructure</h2>
+            <ul class="list-grid">
+                <li><strong>Routing & Switching</strong> Edge routers, managed switches, and wireless access points.</li>
+                <li><strong>Modems & Gateways</strong> Fiber ONT, Cable modems, and 5G/LTE cellular gateways.</li>
+                <li><strong>Physical Layers</strong> Ethernet (Cat6/7), Fiber Optic cables, and Patch panels.</li>
+                <li><strong>Enterprise Nodes</strong> Rack servers, NAS (Network Attached Storage), and hardware Firewalls.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="industrial">
+        <div class="card">
+            <h2><i class="fas fa-robot"></i> Industrial, Robotics & Electronics</h2>
+            
+            <ul class="list-grid">
+                <li><strong>Embedded Logic</strong> Arduino, Raspberry Pi, and ESP32 development boards.</li>
+                <li><strong>Discrete Electronics</strong> Transistors, Resistors, Capacitors, and Integrated Circuits (ICs).</li>
+                <li><strong>Industrial Automation</strong> PLCs, SCADA systems, and CNC manufacturing hardware.</li>
+                <li><strong>Robotics</strong> Domestic robot vacuums and industrial articulated "Cobots".</li>
+                <li><strong>Scientific Tools</strong> Oscilloscopes, Digital Multimeters, and Spectrometers.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="energy">
+        <div class="card">
+            <h2><i class="fas fa-bolt"></i> Energy & Transportation</h2>
+            
+
+            <ul class="list-grid">
+                <li><strong>Power Systems</strong> Solar Inverters, Wind Turbine controllers, and Hydrogen Fuel Cells.</li>
+                <li><strong>Energy Storage</strong> Li-ion battery packs, BMS (Battery Management Systems), and Power Banks.</li>
+                <li><strong>Future Transport</strong> Electric Vehicles (EV), Autonomous drones, and Charging Stations.</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+</footer>
+
+<script>
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    window.onscroll = function() {
+        let btn = document.getElementById("backToTop");
+        btn.style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
+    };
+</script>
+
+</body>
+</html>

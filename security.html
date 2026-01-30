@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity- Tech360</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /*(Security) */
+        :root {
+            --bg-dark: #050810;
+            --card-bg: #0f172a;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --sec-color: #ff4d4d; /* Cor de destaque: Vermelho */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Botão Home Fixo */
+        .simple-home-btn {
+            position: fixed; top: 20px; left: 20px; z-index: 1000;
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--text-dim); text-decoration: none; padding: 10px 15px;
+            border-radius: 5px; border: 1px solid rgba(255,255,255,0.1);
+            font-weight: bold; transition: 0.3s;
+        }
+        .simple-home-btn:hover { color: white; border-color: var(--sec-color); }
+
+        header {
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 4px solid var(--sec-color);
+        }
+
+        .highlight-red { color: var(--sec-color); }
+
+        nav.sticky-nav {
+            background: rgba(15, 23, 42, 0.95);
+            position: sticky; top: 0; z-index: 999;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .menu { display: flex; justify-content: center; list-style: none; gap: 20px; padding: 0; margin: 0; }
+        .menu a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        .menu a:hover { color: var(--sec-color); }
+
+        main { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .intro-box { text-align: center; margin-bottom: 50px; }
+        
+        .card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-top: 3px solid var(--sec-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h2 { display: flex; align-items: center; gap: 15px; color: var(--sec-color); margin-top: 0; }
+
+        /* Lista em colunas */
+        .list-columns ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-columns li {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--sec-color);
+        }
+
+        .list-columns strong { color: #fff; display: block; margin-bottom: 5px; }
+
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px; display: none;
+            background: var(--sec-color); color: white; border: none;
+            padding: 15px; border-radius: 50%; cursor: pointer; z-index: 1000;
+        }
+
+        footer { text-align: center; padding: 60px; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="security-page">
+
+<a href="index.html" class="simple-home-btn"><i class="fas fa-arrow-left"></i> HOME</a>
+
+<button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+<header>
+    <h1>Cyber<span class="highlight-red">Security_360</span></h1>
+    <p>The Art of Digital Defense and Information Integrity</p>
+</header>
+
+<nav class="sticky-nav">
+    <ul class="menu">
+        <li><a href="#intro">Overview</a></li>
+        <li><a href="#hygiene">Hygiene</a></li>
+        <li><a href="#hacker-types">Ethics</a></li>
+        <li><a href="#threats">Threats</a></li>
+        <li><a href="#network">Network</a></li>
+        <li><a href="#ops">SOC</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section id="intro" class="intro-box">
+        <div class="card">
+            <h2><i class="fas fa-fort-awesome"></i> Digital Fortress</h2>
+            <p>Cybersecurity is the multi-layered discipline of protecting networks, devices, and data from unauthorized access. In 2026, it is no longer just about firewalls, but about creating a resilient ecosystem that can predict, withstand, and recover from sophisticated digital threats.</p>
+        </div>
+    </section>
+
+    <section id="hygiene">
+        <div class="card">
+            <h2><i class="fas fa-user-shield"></i> The Foundations of Security</h2>
+            <p>At the core of every security strategy is the <strong>CIA Triad</strong>. Without these three pillars, data is fundamentally vulnerable.</p>
+            <div class="list-columns">
+                <ul>
+                    <li><strong>Confidentiality:</strong> Ensuring that data is only accessible to authorized individuals using encryption like AES-256.</li>
+                    <li><strong>Integrity:</strong> Guaranteeing that information is accurate and has not been tampered with (using Hashing/Digital Signatures).</li>
+                    <li><strong>Availability:</strong> Ensuring systems and data are accessible when needed, protected against DDoS attacks.</li>
+                    <li><strong>Smart MFA:</strong> Moving from SMS codes to hardware tokens (Yubikeys) or App-based authenticators.</li>
+                    <li><strong>The 3-2-1 Backup Rule:</strong> 3 copies of data, 2 different media types, 1 copy kept offsite or in the cloud.</li>
+                    <li><strong>Social Engineering Defense:</strong> Training to identify Phishing, Pretexting, and Baiting attempts.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="hacker-types">
+        <div class="card">
+            <h2><i class="fas fa-user-ninja"></i> The Hacker Spectrum</h2>
+            <div class="list-columns">
+                <ul>
+                    <li><strong>White Hat:</strong> Ethical hackers hired to find and fix vulnerabilities through authorized penetration testing.</li>
+                    <li><strong>Black Hat:</strong> Criminal actors who exploit vulnerabilities for illegal personal, financial or political gain.</li>
+                    <li><strong>Grey Hat:</strong> Individuals who may find flaws without permission but usually without malicious intent.</li>
+                    <li><strong>Hacktivists:</strong> Actors who use cyberattacks to promote a social or political agenda.</li>
+                    <li><strong>State-Sponsored:</strong> Highly skilled units funded by governments for national espionage or infrastructure sabotage.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="threats">
+        <div class="card">
+            <h2><i class="fas fa-biohazard"></i> Advanced Threat Landscape</h2>
+            <p>Modern attacks use multiple stages to bypass perimeters. Understanding the <strong>Cyber Kill Chain</strong> is essential for defense.</p>
+            <div class="list-columns">
+                <ul>
+                    <li><strong>APT (Advanced Persistent Threats):</strong> Stealthy, long-term network infiltration focusing on data exfiltration.</li>
+                    <li><strong>Ransomware 3.0:</strong> Triple extortion involving encryption, data leaking, and targeted DDoS attacks.</li>
+                    <li><strong>Zero-Day Exploits:</strong> Attacks targeting software flaws that are unknown to the developer and have no patch.</li>
+                    <li><strong>Supply Chain Attacks:</strong> Compromising a trusted vendor to gain access to their entire global client base.</li>
+                    <li><strong>Fileless Malware:</strong> Malicious code that resides only in RAM, making it invisible to disk scanners.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="network">
+        <div class="card">
+            <h2><i class="fas fa-key"></i> Networking & Cryptography</h2>
+            <div class="list-columns">
+                <ul>
+                    <li><strong>TLS 1.3 Encryption:</strong> The latest protocol for secure end-to-end web communication.</li>
+                    <li><strong>Zero Trust Architecture:</strong> A security framework built on the principle of "Never Trust, Always Verify".</li>
+                    <li><strong>Asymmetric Encryption:</strong> Using RSA or ECC for secure key exchange between two parties.</li>
+                    <li><strong>WPA3 Protocol:</strong> The modern standard for encrypting wireless networks.</li>
+                    <li><strong>VPN Tunnels:</strong> Encrypted lanes (WireGuard/OpenVPN) that shield data from public internet snoopers.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="ops">
+        <div class="card">
+            <h2><i class="fas fa-microscope"></i> Security Operations (SOC)</h2>
+            <div class="list-columns">
+                <ul>
+                    <li><strong>SIEM/SOAR:</strong> Real-time log analysis and automated incident response.</li>
+                    <li><strong>Memory Forensics:</strong> Analyzing system RAM to find active malicious connections.</li>
+                    <li><strong>Digital Forensics:</strong> Creating bit-for-bit disk images for legal investigations.</li>
+                    <li><strong>Malware Sandboxing:</strong> Safely detonating suspicious files in isolated virtual environments.</li>
+                    <li><strong>Red vs Blue Teams:</strong> Simulations where the Red team attacks and the Blue team defends.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Tech360 | Knowledge is your strongest shield.</p>
+</footer>
+
+<script>
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    window.onscroll = function() {
+        let btn = document.getElementById("backToTop");
+        if (document.documentElement.scrollTop > 300) { btn.style.display = "block"; } 
+        else { btn.style.display = "none"; }
+    };
+</script>
+
+</body>
+</html>
